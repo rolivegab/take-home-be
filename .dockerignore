@@ -1,0 +1,14 @@
+.data
+.github
+dist
+node_modules
+.env
+.eslintcache
+.eslintignore
+.eslintrc.js
+docker-compose.yml
+Dockerfile
+Dockerfile_tests
+Jenkinsfile
+README.md
+

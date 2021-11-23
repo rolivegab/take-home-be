@@ -1,0 +1,16 @@
+# Unit Tests
+
+FROM build_image as unit_test
+WORKDIR /usr/src/app
+RUN npm run test 
+
+# End to End tests
+
+# FROM build_image as e2e_test
+# WORKDIR /usr/src/app
+# RUN npm run test:e2e
+
+FROM build_image as cov_test
+WORKDIR /usr/src/app
+RUN npm run test:cov 
+

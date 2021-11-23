@@ -1,0 +1,16 @@
+*.env
+.idea
+.env.*
+.vscode
+./vscode/*
+/node_modules/*
+/build/*
+/lib/*
+/dist/*
+npm-debug.log*
+yarn-error.log*
+yarn.lock
+coverage
+.data
+.eslintcache
+*.log
