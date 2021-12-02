@@ -23,7 +23,7 @@ This is a small take home assignment to learn and be familiarized with our stack
 
 ### Optimizely
 
-You can follow the steps to create a new Optimizely free account here: http://optimizely.com/
+You can follow the steps to create a new Optimizely free account here: https://www.optimizely.com/free-feature-flagging/#sign-up
 
 ### User Identification 
 
