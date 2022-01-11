@@ -1,7 +1,7 @@
 import { jwtConstants } from "@/Auth/config/constants";
-import { JwtStrategy } from "@/auth/strategies/jwt.strategy";
+import { JwtStrategy } from "@/Auth/strategies/jwt.strategy";
 import { FeatureRampsModule } from "@/Commons/featureRamp/featureRamps.module";
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { Logger, Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";

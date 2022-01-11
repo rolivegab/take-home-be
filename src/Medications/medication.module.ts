@@ -1,4 +1,4 @@
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { HttpModule } from "@nestjs/axios";
 import { CacheModule, Logger, Module } from "@nestjs/common";
 import { SequelizeModule } from "@nestjs/sequelize";

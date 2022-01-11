@@ -1,4 +1,4 @@
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 import { useContainer } from "class-validator";
 import flash from "connect-flash";

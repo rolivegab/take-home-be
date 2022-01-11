@@ -1,4 +1,4 @@
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { WinstonModule } from "nest-winston";
 import { WinstonModuleOptions } from "nest-winston/dist/winston.interfaces";
 import { utilities as nestWinstonModuleUtilities } from "nest-winston/dist/winston.utilities";

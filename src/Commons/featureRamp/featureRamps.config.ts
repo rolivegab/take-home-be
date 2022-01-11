@@ -1,4 +1,4 @@
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { Config } from "@optimizely/optimizely-sdk";
 
 export const optimizelySdkConfig: Config = {

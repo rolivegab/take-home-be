@@ -1,4 +1,4 @@
-import { config } from "@/config/environment";
+import { config } from "@/Config/environment";
 import { AuthUser } from "../interfaces/authUser.interface";
 
 export const jwtConstants = {
