@@ -5,4 +5,4 @@ import { FeatureRampsService } from "./featureRamps.service";
   providers: [Logger, FeatureRampsService],
   exports: [FeatureRampsService],
 })
-export class FeatureRampsModule {}
+export class FeatureRampsModule { }

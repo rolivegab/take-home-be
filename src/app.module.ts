@@ -1,14 +1,19 @@
 import { dbConfig } from "@/Config/db";
 import { config } from "@/Config/environment";
 import { loggerConfig } from "@/Config/logger";
-import { HealthModule } from "@/health/health.module";
+import { HealthModule } from "@/Health/health.module";
 import { Module, NestModule } from "@nestjs/common";
 import { RedisModule } from "nestjs-redis";
+import { AuthModule } from "./Auth/auth.module";
+import { UserModule } from "./User/user.module";
+
 
 const appImports = [
   dbConfig,
   loggerConfig,
+  AuthModule,
   HealthModule,
+  UserModule,
   RedisModule.forRootAsync({
     useFactory: () => ({
       host: config.redis.host,

@@ -22,5 +22,5 @@ export const swaggerOptions = new DocumentBuilder()
     MindedSwaggerConfig.SWAGGER_CONTACT_URL,
     MindedSwaggerConfig.SWAGGER_CONTACT_EMAIL
   )
-  .addBearerAuth()
+  .addBasicAuth({ type: 'http' })
   .build();

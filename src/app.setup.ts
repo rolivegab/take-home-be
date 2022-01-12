@@ -1,5 +1,6 @@
 import { config } from "@/Config/environment";
 import { INestApplication, ValidationPipe } from "@nestjs/common";
+import assert from "assert";
 import { useContainer } from "class-validator";
 import flash from "connect-flash";
 import connectRedis from "connect-redis";
@@ -54,6 +55,7 @@ export function setupApplication(app: INestApplication): INestApplication {
 
   app.use(helmet());
   app.use(requestIp.mw());
+  assert(config.passport.sessionSecret, 'SESSION_SECRET env must be set')
   app.use(
     session({
       secret: config.passport.sessionSecret,

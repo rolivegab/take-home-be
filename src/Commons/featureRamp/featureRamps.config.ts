@@ -12,8 +12,7 @@ export const optimizelySdkConfig: Config = {
   logLevel: "error",
 };
 
-export const Features = {
-  BE_TAKE_HOME_ASSIGMENT: {
-    key: "api_take_home_assignment",
-  },
+export enum Features {
+  BE_TAKE_HOME_ASSIGMENT = "api_take_home_assignment",
+  ZIP_CODE = 'zip_code'
 };

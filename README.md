@@ -1,78 +1,32 @@
-# BE Take Home Project
+### Some insights
 
-## Overview 
+1) Changed project to use typescript strict, everything is safer and better now. Also, I didn't need to make anything verbose, typescript has it's ways to automatically infer a lot of things.
 
-This is a small take home assignment to learn and be familiarized with our stack and the development workflow we use in our daily basis.
+2) I tried to create a docker-compose.dev.yaml, for local development, but root folder have node_modules and other things inside .dockerignore, so I didn't want to spend much time on configuring project to have [multiple .dockerignore file support](https://stackoverflow.com/questions/45344158/multiple-dockerignore-files-in-same-directory)
 
-## Goals
+3) I tested creation of new modules/controllers/services, and you can see some of them on repository.
 
-- The main goal is to create a new endpoint behind a feature flag, that allow filtering users based on zip code value
-- Setup of Optimizely and Feature Flags definition are required
-- Exposing the new endpoint with Swagger is important
-- You are free to modify existent code as much as you want
-- Use as many best practices you feel are useful for leverage collaboration and communication
-- The suggested is to commit about 2 hours, maximum. If you need more it's okey, and you can indicate why you needed more time.
+4) I implemented a custom decorator at `src/utils/sRes.ts` by adding a error200 method on it, which receives original express Response object and extends it so it returns the same error format to clients.
 
-## Requirements
+5) My opinion is that http codes should be related to `HTTP Request`, and the server's response header should not depend on the differences of two valid request bodies.
 
-1. Create a new Optimizely free account and setup the API keys
-2. Build the Login endpoint to support user identification
-3. Create a new feature flag as defined in `featureRamp.config`
-4. Define a new Optimizely Audience to enable the FF to certain email addresses
-5. Build a new endpoint to check if current logged in user has a valid Zip Code
+6) NestJS and Passport is great, but I probably prefer will not use it in my next projects. In the end of day, I think I still prefer to implement my own routes/modules/middlewares and having everything more explicit on the project.
 
-### Optimizely
+7) Google API geolocation was easy to setup, but I took some time to understand FeatureFlags, and in the end, I find it very useful. In fact, in my actual job at Flutter they have their own tool, called tools-1, in which we can setup FeatureFlags, and also ResolverTags (which are tags that resolves urls, very useful when working with a multidomain project and a lot of services)
 
-You can follow the steps to create a new Optimizely free account here: https://www.optimizely.com/free-feature-flagging/#sign-up
+8) I also removed everything I'm not using on the project, including Medication modules and all dependencies. Don't know if I could do it, but now it's easier to stay focused in what I did.
 
-### User Identification 
+9) I normally setup a prettier eslint plugin, it's very useful because it normalizes all styles, spaces, quotes, etc. Something that eslint alone can't do very well.
 
-You can implement any library you want. Initially, we provide you with and Auth module that uses Passport and different strategies 
+10) I updated packages dependencies, I like to do it. I also like to have unit tests so I can do a regression test after package updates.
 
-### Zip Code data
+11) Didn't had time to add more unit tests here, for backend I prefer to use mocha over jest, I just find it more stable and with less issues.
 
-You can use the [Google GeoCoding API](http://code.google.com/apis/maps/documentation/geocoding/) to quickly get more information from a Zip Code.
+12) I also created migrations, and improve swagger experience. Authentication is persisted over reloads, and you can do basic auth on top right button. Also, default parameters refer to real default values on database, so you can test all the api endpoints without much pain.
 
-For example, to lookup zip 77379 use a request like this:
+13) I don't like to use sequelize in a typescript environment. I think we have a lot of better options, like prisma, mikroOrm and even plain sql by using pgTyped (seriously, this is awesome)
 
-https://maps.googleapis.com/maps/api/geocode/json?address=77379&sensor=true&key=YOUR_GOOGLE_PLATFORM_API_KEY
+14) I also implemented a BasicStrategy and removed local and jwtOnes, for simplification.
 
-### New Endpoint – Zip Code validation
-
-Users that can login to the platform should have a Zip Code property associated. The endpoint should consider logged in users having a Zip Code, and only the state of NY should be valid. I.e: Users with Zip Code like 10001 are valid.
-
-```
-GET /the-new-endpoint
-{
-  zipCodeValid: true
-}
-```
-
-## Running the app
-
-This app was built using the [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-You can use Docker, but we suggest for the sake of speed to setup a local env for using MySQL and Redis
-
-### Dependencies
-
-- NestJS
-- Optimizely SDK
-- Typescript 4.3.5
-- Swagger (OpenAPI)
-- MySQL (as main storage)
-- Redis (for caching and sessions)
-
-### Commands
-
-```sh
-# To start working, install dependencies:
-$ npm install
-
-# You can run the app in watch mode
-$ npm run start:dev
-
-# Alternatively you can use Docker compose:
-# Builds the db and services in containers
-$ docker-compose up --build
-```
+I think it's that.
+Hope you enjoy!

@@ -30,7 +30,6 @@ COPY --chown=node --from=build_image /usr/src/app/dist ./dist
 COPY --chown=node --from=build_image /usr/src/app/.sequelizerc ./
 COPY --chown=node --from=build_image /usr/src/app/migrations.js ./
 COPY --chown=node --from=build_image /usr/src/app/migrations ./migrations
-COPY --chown=node --from=build_image /usr/src/app/seeders ./seeders
 EXPOSE 3000
 RUN export PACKAGE_VERSION=$(npm run version --silent)
 CMD [ "npm", "start" ]

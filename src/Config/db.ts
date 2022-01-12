@@ -83,7 +83,7 @@ const dbOptions: { [env: string]: SequelizeModuleOptions } = {
 };
 
 // WARNING: sync force should always be false on production
-if (config.isProd && dbOptions.production.sync.force === true) {
+if (config.isProd && dbOptions.production.sync?.force === true) {
   throw new Error("Forced sync is disabled in production");
 }
 

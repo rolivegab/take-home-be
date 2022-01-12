@@ -1,17 +1,23 @@
+import assert from "assert";
+
 const { env } = process;
 
 export const DEV_ENV = "dev";
 export const TEST_ENV = "test";
 export const STAGING_ENV = "staging";
 export const PRODUCTION_ENV = "production";
-export const envs: Array<string> = [
+export const envs = [
   DEV_ENV,
   TEST_ENV,
   STAGING_ENV,
   PRODUCTION_ENV,
 ];
 
-if (!envs.includes(env.NODE_ENV)) {
+assert(env.NODE_ENV, 'NODE_ENV env must be set')
+assert(env.GOOGLE_GEOLOCATION_API_KEY, 'GOOGLE_GEOLOCATION_API_KEY env must be set')
+assert(env.npm_package_version)
+
+if (!(envs).includes(env.NODE_ENV)) {
   throw new Error(
     `${env.NODE_ENV} is not valid. Choose a valid environment ${envs}`
   );
@@ -113,4 +119,8 @@ export const config = {
       PASSWORD_CHANGED: "PASSWORD_CHANGED",
     },
   },
+
+  google: {
+    locationApiKey: env.GOOGLE_GEOLOCATION_API_KEY
+  }
 };

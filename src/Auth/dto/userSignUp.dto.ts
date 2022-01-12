@@ -1,43 +1,27 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsNotEmpty, IsOptional, Matches } from "class-validator";
+import { IsNotEmpty, Matches } from "class-validator";
 
 const passwordRegex =
   /^(?=.*?[A-Z])(?=.*?[#¿?¡!@$%^&/()=+{}[\]:;."'`,*\-_<>¬]).{8,}$/;
 
-export class UserCredentialsDto {
+export class UserSignUpDto {
   @ApiProperty({
-    example: "some@email.com",
-    description: "User email",
+    example: "rolivegab",
+    description: "Username, must be unique",
   })
-  @IsEmail()
-  email: string;
+  username!: string;
 
   @ApiProperty({
-    example: "Password!",
+    example: "Password!123",
     description: "User password",
   })
   @IsNotEmpty()
   @Matches(passwordRegex)
-  password: string;
+  password!: string;
 
   @ApiProperty({
-    example: "1990-01-01",
-    description: "User DOB, in `YYYY-MM-DD` format",
+    example: '10001',
+    description: "User zip code"
   })
-  @IsOptional()
-  dob?: string;
-
-  @ApiProperty({
-    example: "10009",
-    description: "New York zip code",
-  })
-  @IsNotEmpty()
-  zipCode?: string;
-
-  @ApiProperty({
-    example: "5555551234",
-    description: "User phone number",
-  })
-  @IsOptional()
-  phoneNumber?: string;
+  zipCode!: string;
 }

@@ -16,7 +16,11 @@ async function bootstrap() {
   // Disable swagger ui for the production and testing environments
   if (config.isDev || config.isStaging) {
     const document = SwaggerModule.createDocument(app, swaggerOptions);
-    SwaggerModule.setup("api", app, document);
+    SwaggerModule.setup("api", app, document, {
+      swaggerOptions: {
+        persistAuthorization: true
+      }
+    });
   }
 
   await app.listen(3000);

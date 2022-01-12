@@ -10,13 +10,13 @@ import { v4 as uuidV4 } from "uuid";
 
 @Injectable()
 export class FeatureRampsService {
-  private client: Client;
+  private optimizelyClient: Client;
 
   constructor(private readonly logger: Logger) {
     optimizelySdk.setLogLevel("info");
     optimizelySdk.setLogger(optimizelySdk.logging.createLogger());
 
-    this.client = optimizelySdk.createInstance(optimizelySdkConfig);
+    this.optimizelyClient = optimizelySdk.createInstance(optimizelySdkConfig);
   }
 
   public isFeatureEnabled(
@@ -24,7 +24,7 @@ export class FeatureRampsService {
     userId?: string,
     attributes?: UserAttributes
   ): boolean {
-    const featureStatus = this.client.isFeatureEnabled(
+    const featureStatus = this.optimizelyClient.isFeatureEnabled(
       feature,
       userId ?? uuidV4(),
       attributes
@@ -42,7 +42,7 @@ export class FeatureRampsService {
     userId: string,
     attributes?: UserAttributes
   ): unknown {
-    return this.client.getFeatureVariable(
+    return this.optimizelyClient.getFeatureVariable(
       featureKey,
       variableKey,
       userId,
@@ -56,7 +56,7 @@ export class FeatureRampsService {
    * @returns
    */
   public getOptimizelyConfig(): optimizelySdk.OptimizelyConfig | null {
-    return this.client.getOptimizelyConfig();
+    return this.optimizelyClient.getOptimizelyConfig();
   }
 
   /**
@@ -66,7 +66,7 @@ export class FeatureRampsService {
   public getStateExpansionFeatureMap(stateList: string[]): {
     [key: string]: boolean;
   } {
-    return stateList.reduce((states, state) => {
+    return stateList.reduce((states: any, state) => {
       const feature = get(
         Features,
         `RELEASE_EXPANSION_${state}_STATE.key`,
