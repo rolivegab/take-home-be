@@ -28,5 +28,25 @@
 
 14) I also implemented a BasicStrategy and removed local and jwtOnes, for simplification.
 
+Quickly update by showing all necessary envs to have the project running
+```
+NODE_ENV=dev
+OPTIMIZELY_SDK_KEY=your_optimizely_sdk_key
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_AUTH_PASSWORD=redis123
+MYSQL_HOST=mysql
+MYSQL_WRITE_HOST=mysql
+MYSQL_READ_HOST_0=mysql
+MYSQL_PORT=3306
+MYSQL_DB=minded_local
+MYSQL_USER=root
+MYSQL_PASS=root
+JWT_SECRET=jwtsecret123jwtsecret123jwtsecret123
+SESSION_SECRET=sessionsecret123sessionsecret123sessionsecret123
+PORT=3000
+GOOGLE_GEOLOCATION_API_KEY=your_google_geolocation_api
+```
+
 I think it's that.
 Hope you enjoy!
